@@ -51,7 +51,7 @@ import { TongWenParser, TongWenConverter } from 'tonwen';
     return browser.runtime.sendMessage({ nodeTexts, target });
   };
 
-  const walker = await TongWenParser.create(converter);
+  const walker = new TongWenParser(converter);
 
   walker.convertPage(document, 's2t');
 })();

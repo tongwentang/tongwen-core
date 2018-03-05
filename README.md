@@ -47,7 +47,7 @@ Here is an example for using TongWenCore and TongWenParser in browser extension 
     return browser.runtime.sendMessage({ nodeTexts, target });
   };
 
-  const walker = await TongWenParser.create(converter);
+  const walker = new TongWenParser(converter);
 
   walker.convertPage(document, 's2t');
 })();
