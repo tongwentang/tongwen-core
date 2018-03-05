@@ -35,7 +35,7 @@ import { TongWenCore } from 'tonwen';
 (async function main() {
   const core = await TongWenCore.create(dics);
 
-  browser.runtime.onMessage.addListener((req, sender, res) => {
+  browser.runtime.onMessage.addListener(async (req, sender, res) => {
     return req.nodeTexts.map(nodeText => core.convertSync(nodeText.text, req.target));
   });
 })();
