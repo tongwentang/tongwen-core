@@ -1,0 +1,38 @@
+{
+  "name": "tongwen-core",
+  "version": "1.0.0",
+  "description": "A fast converter between Traditional Chinese and Simplified Chinese",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "tsc",
+    "test": "tsc --noEmit",
+    "upgrade": "yarn upgradeInteractive --latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tongwentang/tongwen-core.git"
+  },
+  "keywords": [
+    "tongwen",
+    "new tongwentang",
+    "simplified chinese",
+    "traditional chinese",
+    "converter"
+  ],
+  "author": "t7yang <t7yang@gmail.com> (https://github.com/t7yang)",
+  "contributors": [
+    "t7yang <t7yang@gmail.com> (https://github.com/t7yang)",
+    "cookwu (https://github.com/cookwu)",
+    "softcup (https://github.com/softcup)",
+    "ettoolong (https://github.com/ettoolong)"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tongwentang/tongwen-core/issues"
+  },
+  "homepage": "https://github.com/tongwentang/tongwen-core/tongwen#README",
+  "devDependencies": {
+    "@types/node": "^9.4.6",
+    "typescript": "^2.7.2"
+  }
+}
