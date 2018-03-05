@@ -1,6 +1,6 @@
 import { ConvertTarget } from '../tongwen-core/interface';
 
-export class TongWen {
+export class TongWenParser {
   protected converter: TongWenConverter;
 
   constructor(converter: TongWenConverter) {
