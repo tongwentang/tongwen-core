@@ -2,7 +2,7 @@
 
 A fast converter between Traditional Chinese and Simplified Chinese.
 
-This repository has two classes, TongWenCore for convert character between Traditional Chinese and Simplified Chinese, TongWenParser for travese DOM tree and collect meaningful text. Both classes provide async and sync method.
+This repository has two classes, TongWenCore for convert character between Traditional Chinese and Simplified Chinese, TongWenParser for travese DOM tree and collect meaningful text. Both classes are `Promise` friendly.
 
 ## Installation
 
