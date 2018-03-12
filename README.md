@@ -6,7 +6,15 @@ This repository has two classes, TongWenCore for convert character between Tradi
 
 ## Installation
 
-Currently can only install via git protocal. NPM package is working on progress.
+Install by npm:
+```bash
+$ npm install tongwen-core
+```
+
+Install by yarn:
+```bash
+$ yarn add tongwen-core
+```
 
 ## Examples and Usages
 
