@@ -1,10 +1,10 @@
 import { TongWenCore } from './';
 import { Core_RawGroupDic } from './interface';
 
-const defaultPS2TTable = require('../dictionaries/s2t_phrase.json');
-const defaultPT2STable = require('../dictionaries/t2s_phrase.json');
-const defaultS2TTable = require('../dictionaries/s2t_char.json');
-const defaultT2STable = require('../dictionaries/t2s_char.json');
+const defaultPS2TTable = require('../../dictionaries/s2t_phrase.json');
+const defaultPT2STable = require('../../dictionaries/t2s_phrase.json');
+const defaultS2TTable = require('../../dictionaries/s2t_char.json');
+const defaultT2STable = require('../../dictionaries/t2s_char.json');
 
 const DICTIONARY2: Core_RawGroupDic = {
   s2t: {

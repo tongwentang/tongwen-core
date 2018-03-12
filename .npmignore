@@ -1,0 +1,13 @@
+# exclude
+/src/
+/.prettierrc
+/tsconfig.json
+/.gitignore
+yarn*
+
+# include
+!/index.js
+!/index.js.map
+!/index.d.ts
+!/tongwen-core
+!/tongwen-parser
