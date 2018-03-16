@@ -6,7 +6,15 @@
 
 ## 安裝
 
-目前僅能使用 git 協定的方式進行安裝。NPM 套件還在努力中。
+Install by npm:
+```bash
+$ npm install tongwen-core
+```
+
+Install by yarn:
+```bash
+$ yarn add tongwen-core
+```
 
 ## 範例及使用
 
