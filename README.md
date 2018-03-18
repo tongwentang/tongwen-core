@@ -8,12 +8,12 @@ This repository has two classes, TongWenCore for convert character between Tradi
 
 Install by npm:
 ```bash
-$ npm install tongwen-core
+npm install tongwen-core
 ```
 
 Install by yarn:
 ```bash
-$ yarn add tongwen-core
+yarn add tongwen-core
 ```
 
 ## Examples and Usages
@@ -60,6 +60,9 @@ Here is an example for using TongWenCore and TongWenParser in browser extension 
   walker.convertPage(document, 's2t');
 })();
 ```
+
+## Dictionaries
+Dictionaries that included in this project is use only for test, you can use them but not recommmanded, since they are for v1.5 New TongWenTang Core algorithm. We plan to release a independent dictionary repository in the futher.
 
 ## API and Types
 
