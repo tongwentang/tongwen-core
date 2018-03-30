@@ -1,8 +1,8 @@
-# TongWenCore and TongWen
+# TongWen Core converter
 
 A fast converter between Traditional Chinese and Simplified Chinese.
 
-This repository has two classes, TongWenCore for convert character between Traditional Chinese and Simplified Chinese, TongWenParser for travese DOM tree and collect meaningful text. Both classes are `Promise` friendly.
+This project provided a way to convert character between Traditional Chinese and Simplified Chinese in speed. A core and a parser being provided, the former help you to convert string, and the latter help you to travese DOM tree and collect meaningful text.
 
 ## Installation
 
@@ -20,26 +20,25 @@ yarn add tongwen-core
 
 Note: Example scripts are all written in TypeScript, so there will be some types annotation.
 
-A example for how to use TongWenCore:
+A example for how to use core:
 
 ```typescript
 (async () => {
-  // assuming dics is ready
-  // const dics: Core_RawGroupDic = ...
-  const core = await TongWenCore.create(dics);
-  const result = await core.convert('9天后', 's2t');
-  // result === '9天後'
+  const dics = { s2t: { 台湾: '台灣' }, t2s: { 台灣: '台湾' } };
+  const core = await TWCore_Obj.create(dics);
+  const result = await core.convert('台湾', 's2t');
+  // result === '台灣'
 })();
 ```
 
-Note: You should provide dictionaries when creating instance of TongWenCore, it does not contain any default dictionaries.
+Note: You should provide dictionaries when creating instance of core, core class does not include any default dictionaries as property.
 
-Here is an example for using TongWenCore and TongWenParser in browser extension development.
+Here is an example for using core and parser in browser extension development.
 
 ```typescript
 // background-script
 (async function main() {
-  const core = await TongWenCore.create(dics);
+  const core = await TWCore_Obj.create(dics);
 
   browser.runtime.onMessage.addListener(async (req, sender, res) => {
     return req.nodeTexts.map(nodeText => core.convertSync(nodeText.text, req.target));
@@ -48,16 +47,16 @@ Here is an example for using TongWenCore and TongWenParser in browser extension 
 
 // content-script
 (async function main() {
-  const converter: TongWenConverter = async (
+  const converter: TW_Converter = async (
     nodeTexts: NodeText[],
     target: ConvertTarget,
   ): Promise<NodeText[]> => {
     return browser.runtime.sendMessage({ nodeTexts, target });
   };
 
-  const walker = new TongWenParser(converter);
+  const parser = new TWParser(converter);
 
-  walker.convertPage(document, 's2t');
+  parser.convertPage(document, 's2t');
 })();
 ```
 
@@ -66,17 +65,22 @@ Dictionaries that included in this project is use only for test, you can use the
 
 ## API and Types
 
-This project provide only 2 classes, below is classes and its public methods：
+There have two core class which share the same interface `ITWCore`, and the parser has its own.
 
-* classs TongWenCore
-  * static create()
-  * static createSync()
-  * convert()
-  * convertSync()
-  * convertChar()
-  * convertCharSync()
-* TongWenParser
-  * convertPage()
+```typescript
+interface ITWCore {
+  convertSync(text: string, target: TWC_Target): string;
+  convert(text: string, target: TWC_Target): Promise<string>;
+  convertCharSync(text: string, target: TWC_Target): string;
+  convertChar(text: string, target: TWC_Target): Promise<string>;
+}
+
+class TWParser {
+  async convertPage(doc: Document, target: TWC_Target): Promise<void> {}
+}
+```
+
+For more detail, please check the TypeScript source code.
 
 ### Recommanded for development
 
@@ -88,7 +92,6 @@ This project provide only 2 classes, below is classes and its public methods：
   * `yarn`
 * `npm` scripts：
   * `test`：test for any TypeScript error
-  * `format`：format files on `src/`
 
 ## Story
 

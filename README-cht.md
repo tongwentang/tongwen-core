@@ -2,7 +2,7 @@
 
 一個針對正體／繁體中文和簡體中文的快速轉換器。
 
-這個專案提供了兩個類別， TongWenCore 是正體／繁體和簡體的轉換核心， TongWenParser 則是負責跑遍 DOM 結構並蒐集有意義的文字。兩者皆是 `Promise` 友善。
+這個專案提供一個快速的正體／繁體和簡體的轉換方案，分別有核心和解析器，前者負責轉換字串，後者負責負責跑遍 DOM 結構並蒐集有意義的文字。
 
 ## 安裝
 
@@ -24,24 +24,21 @@ TongWenCore 的使用範例：
 
 ```typescript
 (async () => {
-  // assuming dics is ready
-  // const dics: Core_RawGroupDic = ...
-  const core = await TongWenCore.create(dics);
-  const result = await core.convert('9天后', 's2t');
-  // result === '9天後'
+  const dics = { s2t: { 台湾: '台灣' }, t2s: { 台灣: '台湾' } };
+  const core = await TWCore_Obj.create(dics);
+  const result = await core.convert('台湾', 's2t');
+  // result === '台灣'
 })();
 ```
 
-注意：你必須在建立 TongWenCore 實體時提供字典檔並沒有提供預設的字典檔。
+注意：你必須在建立核心實例時提供相應的字典檔，核心並不預設內見字典檔。
 
-這是一個有關如何在瀏覽器套件中使用 TongWenCore 和 TongWenParser 的範例。
+這是一個有關如何在瀏覽器套件中使用核心和解析器的範例。
 
 ```typescript
 // background-script
-import { TongWenCore } from 'tonwen';
-
 (async function main() {
-  const core = await TongWenCore.create(dics);
+  const core = await TWCore_Obj.create(dics);
 
   browser.runtime.onMessage.addListener(async (req, sender, res) => {
     return req.nodeTexts.map(nodeText => core.convertSync(nodeText.text, req.target));
@@ -49,19 +46,17 @@ import { TongWenCore } from 'tonwen';
 })();
 
 // content-script
-import { TongWenParser, TongWenConverter } from 'tonwen';
-
 (async function main() {
-  const converter: TongWenConverter = async (
+  const converter: TW_Converter = async (
     nodeTexts: NodeText[],
     target: ConvertTarget,
   ): Promise<NodeText[]> => {
     return browser.runtime.sendMessage({ nodeTexts, target });
   };
 
-  const walker = new TongWenParser(converter);
+  const parser = new TWParser(converter);
 
-  walker.convertPage(document, 's2t');
+  parser.convertPage(document, 's2t');
 })();
 ```
 
@@ -70,17 +65,22 @@ import { TongWenParser, TongWenConverter } from 'tonwen';
 
 ## API 及型別
 
-此專案只提供兩個類別，以下是類別及其公開成員：
+專案有兩個實作一樣介面 `ITWCore` 的核心類別，解析器則有他自己的型別。
 
-* classs TongWenCore
-  * static create()
-  * static createSync()
-  * convert()
-  * convertSync()
-  * convertChar()
-  * convertCharSync()
-* TongWenParser
-  * convertPage()
+```typescript
+interface ITWCore {
+  convertSync(text: string, target: TWC_Target): string;
+  convert(text: string, target: TWC_Target): Promise<string>;
+  convertCharSync(text: string, target: TWC_Target): string;
+  convertChar(text: string, target: TWC_Target): Promise<string>;
+}
+
+class TWParser {
+  async convertPage(doc: Document, target: TWC_Target): Promise<void> {}
+}
+```
+
+更多詳情，請直接閱讀 TypeScript 原始碼.
 
 ### 開發建議
 
@@ -92,7 +92,6 @@ import { TongWenParser, TongWenConverter } from 'tonwen';
   * `yarn`
 * `npm` 指令：
   * `test`：測試撰寫的 TypeScript 是否有錯誤
-  * `format`：使用 prettier 對 `src/` 檔案進行排版
 
 ## 故事
 
