@@ -1,5 +1,9 @@
 # TongWen Core Changelog
 
+## 2.0.1
+* BREAKING CHANGES
+  - patch for add prefix to NodeText type
+
 ## 2.0.0
 * BREAKING CHANGES
   - Rename exported classes and interface name.
