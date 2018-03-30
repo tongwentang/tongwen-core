@@ -1,13 +1,13 @@
-import { ConvertTarget } from '../tongwen-core/interface';
+import { TWC_Target } from '../tongwen-core';
 
-export class TongWenParser {
-  protected converter: TongWenConverter;
+export class TWParser {
+  protected converter: TWConverter;
 
-  constructor(converter: TongWenConverter) {
+  constructor(converter: TWConverter) {
     this.converter = converter;
   }
 
-  async convertPage(doc: Document, target: ConvertTarget) {
+  async convertPage(doc: Document, target: TWC_Target) {
     const nodes: Array<HTMLElement | Document> = [];
     const nodeTexts: NodeText[] = [];
     nodes.push(document);
@@ -68,8 +68,8 @@ export class TongWenParser {
   }
 }
 
-export interface TongWenConverter {
-  (nodeTexts: NodeText[], target: ConvertTarget): Promise<NodeText[]>;
+export interface TWConverter {
+  (nodeTexts: NodeText[], target: TWC_Target): Promise<NodeText[]>;
 }
 
 export interface NodeText {

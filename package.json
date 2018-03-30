@@ -1,11 +1,12 @@
 {
   "name": "tongwen-core",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "A fast converter between Traditional Chinese and Simplified Chinese",
   "main": "index.js",
   "scripts": {
     "test": "tsc --noEmit",
-    "upgrade": "yarn upgradeInteractive --latest"
+    "upgrade": "yarn upgradeInteractive --latest",
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^9.4.6",
-    "typescript": "^2.7.2"
+    "@types/node": "^9.6.1",
+    "typescript": "^2.8.1"
   }
 }

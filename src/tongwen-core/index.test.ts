@@ -1,29 +1,22 @@
-import { TongWenCore } from './';
-import { Core_RawGroupDic } from './interface';
+import { TWCore_Map } from './map';
+import { TWCore_Obj } from './obj';
 
 const defaultPS2TTable = require('../../dictionaries/s2t_phrase.json');
 const defaultPT2STable = require('../../dictionaries/t2s_phrase.json');
 const defaultS2TTable = require('../../dictionaries/s2t_char.json');
 const defaultT2STable = require('../../dictionaries/t2s_char.json');
 
-const DICTIONARY2: Core_RawGroupDic = {
-  s2t: {
-    char: defaultS2TTable,
-    phrase: defaultPS2TTable,
-  },
-  t2s: {
-    char: defaultT2STable,
-    phrase: defaultPT2STable,
-  },
-};
-
-enum types {
-  s2t = 's2t',
-  t2s = 't2s',
-}
-
 (async () => {
-  const core = await TongWenCore.create(DICTIONARY2);
+  const mapCore = await TWCore_Map.create({
+    s2t: { ...defaultS2TTable.map, ...defaultPS2TTable.map },
+    t2s: { ...defaultT2STable.map, ...defaultPT2STable.map },
+  });
+
+  const objCore = await TWCore_Obj.create({
+    s2t: { ...defaultS2TTable.map, ...defaultPS2TTable.map },
+    t2s: { ...defaultT2STable.map, ...defaultPT2STable.map },
+  });
+
   const text = `    话说天下大势，分久必合，合久必分。周末七国分争，并入于秦。及秦灭之后，楚、汉
   分争，又并入于汉。汉朝自高祖斩白蛇而起义，一统天下，后来光武中兴，传至献帝，遂分
   为三国。推其致乱之由，殆始于桓、灵二帝。桓帝禁锢善类，崇信宦官。及桓帝崩，灵帝即
@@ -166,8 +159,15 @@ enum types {
   要提刀入帐来杀董卓。正是：人情势利古犹今，谁识英雄是白身？安得快人如翼德，尽诛世
   上负心人！毕竟董卓性命如何，9天后且听下文分解。`;
 
-  console.time('transform');
-  const result = await core.convert(text, types.s2t);
-  console.timeEnd('transform');
-  //   console.log(result);
+  console.time('transform-map');
+  //   const mapResult = await mapCore.convert(text, 's2t');
+  await Promise.all(Array.from({ length: 100 }).map(() => mapCore.convert(text, 's2t')));
+  console.timeEnd('transform-map');
+  //   console.log(mapResult);
+
+  console.time('transform-obj');
+  // const objResult = await objCore.convert(text, 's2t');
+  await Promise.all(Array.from({ length: 100 }).map(() => objCore.convert(text, 's2t')));
+  console.timeEnd('transform-obj');
+  // console.log(objResult);
 })();
