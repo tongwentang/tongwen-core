@@ -9,7 +9,7 @@ export class TWParser {
 
   async convertPage(doc: Document, target: TWC_Target) {
     const nodes: Array<HTMLElement | Document> = [];
-    const nodeTexts: NodeText[] = [];
+    const nodeTexts: TWNodeText[] = [];
     nodes.push(document);
     nodeTexts.push({ type: 'document', text: doc.title });
 
@@ -45,7 +45,7 @@ export class TWParser {
     return this.replacer(nodes, converted);
   }
 
-  protected replacer(nodes: Array<HTMLElement | Document>, nodeTexts: NodeText[]) {
+  protected replacer(nodes: Array<HTMLElement | Document>, nodeTexts: TWNodeText[]) {
     nodes.map((node, index) => {
       if (node) {
         switch (nodeTexts[index].type) {
@@ -69,10 +69,10 @@ export class TWParser {
 }
 
 export interface TWConverter {
-  (nodeTexts: NodeText[], target: TWC_Target): Promise<NodeText[]>;
+  (nodeTexts: TWNodeText[], target: TWC_Target): Promise<TWNodeText[]>;
 }
 
-export interface NodeText {
+export interface TWNodeText {
   type: 'document' | 'element' | 'text';
   attr?: string;
   text: string;
