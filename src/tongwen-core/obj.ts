@@ -42,7 +42,7 @@ export class TWCore_Obj implements ITWCore {
     return Object.entries(multi).reduce((sum: TWC_SortedObj, [key, value]) => {
       const indexKey = key.substring(0, 2);
 
-      if (indexKey in sum) {
+      if (sum.hasOwnProperty(indexKey)) {
         sum[indexKey].map[key] = value;
         if (key.length > sum[indexKey].maxLength) {
           sum[indexKey].maxLength = key.length;
@@ -82,13 +82,13 @@ export class TWCore_Obj implements ITWCore {
     while (pointer < textLength) {
       const index = text.substring(pointer, pointer + 2);
 
-      if (index in multi) {
+      if (multi.hasOwnProperty(index)) {
         let isFound = false;
 
         for (let currLength = multi[index].maxLength; currLength > 1; currLength--) {
           const toMap = text.substring(pointer, pointer + currLength);
 
-          if (toMap in multi[index].map) {
+          if (multi[index].map.hasOwnProperty(toMap)) {
             converted += multi[index].map[toMap];
             pointer += currLength;
             isFound = true;
