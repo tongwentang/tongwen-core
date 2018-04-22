@@ -21,13 +21,17 @@ export class TWParser {
 
       switch (node.nodeType) {
         case Node.ELEMENT_NODE:
-          for (const attrName of ['title', 'alt']) {
+          if (excludedNodeNames.includes(node.nodeName)) {
+            break;
+          }
+
+          includedAttr.forEach(attrName => {
             const attrValue = node.getAttribute(attrName) || '';
-            if (attrValue.trim()) {
+            if (attrValue.trim().length > 0) {
               nodes.push(node);
               nodeTexts.push({ type: 'element', attr: attrName, text: attrValue });
             }
-          }
+          });
           break;
         case Node.TEXT_NODE:
           if ((node.nodeValue || '').trim()) {
@@ -77,3 +81,20 @@ export interface TWNodeText {
   attr?: string;
   text: string;
 }
+
+const excludedNodeNames = [
+  'frame',
+  'iframe',
+  'embed',
+  'object',
+  'script',
+  'noscript',
+  'style',
+  'title',
+  'br',
+  'hr',
+  'link',
+  'meta',
+];
+
+const includedAttr = ['title', 'alt'];

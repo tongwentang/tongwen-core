@@ -32,10 +32,6 @@ testem.log
 Thumbs.db
 
 # Compiled files
-/tongwen-parser
-/tongwen-core
-/index.d.ts
-/index.js
-/index.js.map
+/lib
 yarn-error.log
 bash.exe.stackdump
