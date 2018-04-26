@@ -1,5 +1,12 @@
 # TongWen Core Changelog
 
+## 2.1.0
+* IMPROVEMENT
+  * `TWCore_Obj`: replace `in` to `hasOwnProperty` to improve performance.
+  * `TWParser`: add `excludedNodeNames` ignore the node that does not need to convert.
+* OTHER
+  * Files structure changed, now source code move from /src to /src/lib.
+
 ## 2.0.1
 * BREAKING CHANGES
   - patch for add prefix to NodeText type

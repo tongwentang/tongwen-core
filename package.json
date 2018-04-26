@@ -1,8 +1,9 @@
 {
   "name": "tongwen-core",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "A fast converter between Traditional Chinese and Simplified Chinese",
-  "main": "index.js",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "test": "tsc --noEmit",
     "upgrade": "yarn upgradeInteractive --latest",
