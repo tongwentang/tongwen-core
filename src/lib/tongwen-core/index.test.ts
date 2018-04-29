@@ -7,12 +7,12 @@ const defaultS2TTable = require('../../../dictionaries/s2t_char.json');
 const defaultT2STable = require('../../../dictionaries/t2s_char.json');
 
 (async () => {
-  const mapCore = await TWCore_Map.create({
+  const mapCore = TWCore_Map.createSync({
     s2t: { ...defaultS2TTable.map, ...defaultPS2TTable.map },
     t2s: { ...defaultT2STable.map, ...defaultPT2STable.map },
   });
 
-  const objCore = await TWCore_Obj.create({
+  const objCore = TWCore_Obj.createSync({
     s2t: { ...defaultS2TTable.map, ...defaultPS2TTable.map },
     t2s: { ...defaultT2STable.map, ...defaultPT2STable.map },
   });
@@ -160,14 +160,14 @@ const defaultT2STable = require('../../../dictionaries/t2s_char.json');
   上负心人！毕竟董卓性命如何，9天后且听下文分解。`;
 
   console.time('transform-map');
-  //   const mapResult = await mapCore.convert(text, 's2t');
-  await Promise.all(Array.from({ length: 100 }).map(() => mapCore.convert(text, 's2t')));
+  //   const mapResult = await mapCore.convertSync(text, 's2t');
+  Array.from({ length: 500 }).map(() => mapCore.convertSync(text, 's2t'));
   console.timeEnd('transform-map');
   //   console.log(mapResult);
 
   console.time('transform-obj');
-  // const objResult = await objCore.convert(text, 's2t');
-  await Promise.all(Array.from({ length: 100 }).map(() => objCore.convert(text, 's2t')));
+  //   const objResult = await objCore.convertSync(text, 's2t');
+  Array.from({ length: 500 }).map(() => objCore.convertSync(text, 's2t'));
   console.timeEnd('transform-obj');
-  // console.log(objResult);
+  //   console.log(objResult);
 })();
