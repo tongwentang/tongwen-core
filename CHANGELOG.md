@@ -1,5 +1,9 @@
 # TongWen Core Changelog
 
+## 2.2.1
+* OTHER
+  * downgrade `@types/node` to `~0.8.0` LTS.
+
 ## 2.2.0
 * DEPRECATED
   * Temporary deprecate async api like `create`, `convert`, until a proper solution for async has implemented.

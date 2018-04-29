@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@types/node@^10.0.0":
-  version "10.0.0"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-10.0.0.tgz#c40f8e07dce607d3ef25a626b93a6a7cdcf97881"
+"@types/node@~8.0.0":
+  version "8.0.58"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.58.tgz#5b3881c0be3a646874803fee3197ea7f1ed6df90"
 
 typescript@^2.8.3:
   version "2.8.3"
