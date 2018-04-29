@@ -25,8 +25,8 @@ A example for how to use core:
 ```typescript
 (async () => {
   const dics = { s2t: { 台湾: '台灣' }, t2s: { 台灣: '台湾' } };
-  const core = await TWCore_Obj.create(dics);
-  const result = await core.convert('台湾', 's2t');
+  const core = TWCore_Obj.createSync(dics);
+  const result = core.convertSync('台湾', 's2t');
   // result === '台灣'
 })();
 ```
@@ -38,7 +38,7 @@ Here is an example for using core and parser in browser extension development.
 ```typescript
 // background-script
 (async function main() {
-  const core = await TWCore_Obj.create(dics);
+  const core = TWCore_Obj.createSync(dics);
 
   browser.runtime.onMessage.addListener(async (req, sender, res) => {
     return req.nodeTexts.map(nodeText => core.convertSync(nodeText.text, req.target));
@@ -70,9 +70,9 @@ There have two core class which share the same interface `ITWCore`, and the pars
 ```typescript
 interface ITWCore {
   convertSync(text: string, target: TWC_Target): string;
-  convert(text: string, target: TWC_Target): Promise<string>;
+  // convert(text: string, target: TWC_Target): Promise<string>;
   convertCharSync(text: string, target: TWC_Target): string;
-  convertChar(text: string, target: TWC_Target): Promise<string>;
+  // convertChar(text: string, target: TWC_Target): Promise<string>;
 }
 
 class TWParser {

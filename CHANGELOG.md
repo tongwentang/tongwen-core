@@ -1,5 +1,11 @@
 # TongWen Core Changelog
 
+## 2.2.0
+* DEPRECATED
+  * Temporary deprecate async api like `create`, `convert`, until a proper solution for async has implemented.
+* OTHER
+  * Extract sharing code between `TWCORE_Obj` and `TWCORE_Map` to src/lib/shared.
+
 ## 2.1.0
 * IMPROVEMENT
   * `TWCore_Obj`: replace `in` to `hasOwnProperty` to improve performance.
