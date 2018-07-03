@@ -97,4 +97,4 @@ const excludedNodeNames = [
   'meta',
 ];
 
-const includedAttr = ['title', 'alt', 'placeholder'];
+const includedAttr = ['title', 'alt', 'placeholder', 'aria-label'];
