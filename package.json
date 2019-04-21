@@ -32,8 +32,7 @@
   "files": [
     "cjs",
     "esm",
-    "dictionaries",
-    "tsconfig.json"
+    "dictionaries"
   ],
   "scripts": {
     "test": "jest",
