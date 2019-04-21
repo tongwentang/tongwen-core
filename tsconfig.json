@@ -1,19 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2015",
+    "target": "es5",
     "module": "commonjs",
     "lib": ["esnext", "dom"],
+    "strict": true,
     "declaration": true,
     "sourceMap": true,
-    "outDir": "./",
+    "outDir": "./lib",
     "rootDir": "./src",
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noImplicitThis": true,
-    "alwaysStrict": true,
+    "skipLibCheck": true,
+    "composite": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "typeRoots": ["node_modules/@types"],
-    "skipLibCheck": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "src/**/*.test.ts"]
+  "exclude": ["node_modules", "cjs", "esm"]
 }
