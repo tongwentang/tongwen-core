@@ -1,8 +1,6 @@
 # TongWen Core converter
 
-A fast converter between Traditional Chinese and Simplified Chinese.
-
-This project provided a way to convert character between Traditional Chinese and Simplified Chinese in speed. A core and a parser being provided, the former help you to convert string, and the latter help you to travese DOM tree and collect meaningful text.
+A fast converter between Traditional Chinese and Simplified Chinese and a helper DOM tree walker.
 
 ## Installation
 
@@ -18,80 +16,96 @@ yarn add tongwen-core
 
 ## Examples and Usages
 
-Note: Example scripts are all written in TypeScript, so there will be some types annotation.
+Note: Example scripts are all written in TypeScript.
 
-A example for how to use core:
+An example for how to use converter:
 
 ```typescript
-(async () => {
-  const dics = { s2t: { 台湾: '台灣' }, t2s: { 台灣: '台湾' } };
-  const core = TWCore_Obj.createSync(dics);
-  const result = core.convertSync('台湾', 's2t');
-  // result === '台灣'
-})();
+import { createConveterMap, createConveterObj, LangType, SrcPack } from 'tongwen-core';
+
+const dics: SrcPack = { s2t: [{ 台湾: '台灣' }], t2s: [{ 台灣: '台湾' }] };
+const mConv = createConveterMap(dics);
+const oConv = createConveterObj(dics);
+const result = [mConv.phrase(LangType.s2t, '台湾'), oConv.phrase(LangType.s2t, '台湾')];
+console.log(result); // [ '台灣', '台灣' ]
 ```
 
-Note: You should provide dictionaries when creating instance of core, core class does not include any default dictionaries as property.
+> The difference between `createConverterMap` and `createConverterObj` is the former use es `Map` and <br>
+> the latter use plain `Object` as internal data structure. Use depend on your environment, <br> 
+> but the es version is highly recommended, due performance boost can up to 2.x time faster.
 
-Here is an example for using core and parser in browser extension development.
+Note: You should provide dictionaries when creating converter, no default dictionaries.
+
+Here is an example for using converter and walker in web page.
 
 ```typescript
-// background-script
-(async function main() {
-  const core = TWCore_Obj.createSync(dics);
+import { createConveterMap, LangType, SrcPack, walker } from 'tongwen-core';
 
-  browser.runtime.onMessage.addListener(async (req, sender, res) => {
-    return req.nodeTexts.map(nodeText => core.convertSync(nodeText.text, req.target));
-  });
-})();
+const dics: SrcPack = { s2t: [{ 台湾: '台灣' }], t2s: [{ 台灣: '台湾' }] };
+const mConv = createConveterMap(dics);
 
-// content-script
-(async function main() {
-  const converter: TW_Converter = async (
-    nodeTexts: NodeText[],
-    target: ConvertTarget,
-  ): Promise<NodeText[]> => {
-    return browser.runtime.sendMessage({ nodeTexts, target });
-  };
-
-  const parser = new TWParser(converter);
-
-  parser.convertPage(document, 's2t');
-})();
+for (const n of walker(document)) {
+  switch (n.type) {
+    case 'DOCUMENT':
+      n.node.title = mConv.phrase(LangType.s2t, n.text);
+      break;
+    case 'TEXT':
+      n.node.nodeValue = mConv.phrase(LangType.s2t, n.text);
+      break;
+    case 'ATTRIBUTE':
+      n.node.setAttribute(n.attr, mConv.phrase(LangType.s2t, n.text));
+    default:
+      break;
+  }
+}
 ```
 
 ## Dictionaries
-Dictionaries that included in this project is use only for test, you can use them but not recommmanded, since they are for v1.5 New TongWenTang Core algorithm. We plan to release a independent dictionary repository in the futher.
+Dictionaries that included in this project is use only for test, you can use them but not recommmanded, since they are for v1.5 New TongWenTang Core algorithm. We plan to release a independent repository in the future.
 
 ## API and Types
 
-There have two core class which share the same interface `ITWCore`, and the parser has its own.
+For converter
 
 ```typescript
-interface ITWCore {
-  convertSync(text: string, target: TWC_Target): string;
-  // convert(text: string, target: TWC_Target): Promise<string>;
-  convertCharSync(text: string, target: TWC_Target): string;
-  // convertChar(text: string, target: TWC_Target): Promise<string>;
+// The source dictionaries collection
+type SrcPack = {
+    s2t: Record<string, string>[];
+    t2s: Record<string, string>[];
 }
+const dics: SrcPack = { s2t: [{ 台湾: '台灣' }], t2s: [{ 台灣: '台湾' }] };
 
-class TWParser {
-  async convertPage(doc: Document, target: TWC_Target): Promise<void> {}
+// Converter type
+type Converter = {
+  set: (src: SrcPack) => undefined;
+  char: (type: LangType, text: string) => string;
+  phrase: (type: LangType, text: string) => string;
 }
 ```
 
-For more detail, please check the TypeScript source code.
+For walker:
+
+```typescript
+type ParsedNode =
+  | { type: 'DOCUMENT'; node: Document; text: string }
+  | { type: 'ATTRIBUTE'; node: HTMLElement; text: string; attr: string }
+  | { type: 'TEXT'; node: HTMLElement; text: string };
+
+type Walker = (dom: Node) => ParsedNode[];
+```
+
+For more detail, please check the source code.
 
 ### Recommanded for development
 
-* Editor: Visual Studio Code
-  * For best TypeScript support
-  * Packages: prettier - code formater, TypeScript Toolbox
-* Environment
-  * `node`
-  * `yarn`
-* `npm` scripts：
-  * `test`：test for any TypeScript error
+- Editor: Visual Studio Code
+  - For best TypeScript support
+  - Packages: prettier - code formater, TypeScript Toolbox
+- Environment
+  - `node`
+  - `yarn`
+- `npm` scripts：
+  - `test`：test for any TypeScript error
 
 ## Story
 
