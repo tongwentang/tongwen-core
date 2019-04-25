@@ -1,6 +1,6 @@
 import { LangType } from '../dictionary/type';
-import { createConveterMap } from './map/create-converter-map';
-import { createConveterObj } from './obj/create-converter-obj';
+import { createConverterMap } from './map/create-converter-map';
+import { createConverterObj } from './obj/create-converter-obj';
 
 const defaultPS2TTable = require('../../dictionaries/s2t-char.json');
 const defaultPT2STable = require('../../dictionaries/t2s-phrase.json');
@@ -8,11 +8,11 @@ const defaultS2TTable = require('../../dictionaries/s2t-char.json');
 const defaultT2STable = require('../../dictionaries/t2s-char.json');
 
 (async () => {
-  const mConv = createConveterMap({
+  const mConv = createConverterMap({
     s2t: [defaultS2TTable, defaultPT2STable],
     t2s: [defaultT2STable, defaultPS2TTable],
   });
-  const oConv = createConveterObj({
+  const oConv = createConverterObj({
     s2t: [defaultS2TTable, defaultPT2STable],
     t2s: [defaultT2STable, defaultPS2TTable],
   });
