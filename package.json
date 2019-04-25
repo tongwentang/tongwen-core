@@ -37,10 +37,11 @@
   "scripts": {
     "test": "jest",
     "test:tsc": "tsc --noEmit --project tsconfig.build.esm.json",
-    "upgrade": "yarn upgradeInteractive",
+    "update": "yarn upgradeInteractive",
+    "clean": "rm -fr cjs && rm -fr esm",
     "build:cjs": "tsc -p tsconfig.build.cjs.json",
     "build:esm": "tsc -p tsconfig.build.esm.json",
-    "build": "npm run build:cjs && npm run build:esm"
+    "build": "npm run clean && npm run build:cjs && npm run build:esm"
   },
   "devDependencies": {
     "@types/jest": "^24.0.11",
