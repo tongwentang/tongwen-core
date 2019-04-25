@@ -1,6 +1,6 @@
 {
   "name": "tongwen-core",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "A fast converter between Traditional Chinese and Simplified Chinese",
   "homepage": "https://github.com/tongwentang/tongwen-core/tongwen#README",
   "license": "MIT",
