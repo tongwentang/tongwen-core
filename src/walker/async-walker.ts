@@ -2,7 +2,7 @@ import { acceptNode } from './shared/accept-node';
 import { filterNodeType } from './shared/constant';
 import { extractAttrText } from './shared/extract-attr-text';
 import { hasChinese } from './shared/has-chinese';
-import { ParsedNode } from './shared/types';
+import { ParsedNode } from './types';
 
 export async function* asyncWalker(dom: Node): AsyncIterable<ParsedNode> {
   const tw = document.createTreeWalker(dom, filterNodeType(), { acceptNode });
