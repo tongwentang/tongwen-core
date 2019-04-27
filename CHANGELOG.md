@@ -1,11 +1,18 @@
 # TongWen Core Changelog
 
+### v3.1.0
+- Refactor
+  - Move parse node to independ function.
+  - Remove unneeded document node in parse node function.
+- Feature
+  - export all helper functions in walker.
+
 ### v3.0.2
 - Fix
   - Export `ParsedNode` type.
 
 ### v3.0.1
-- Add
+- Feature
   - Add converter and converter creator types.
 
 ### v3.0.0

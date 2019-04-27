@@ -46,9 +46,6 @@ const mConv = createConveterMap(dics);
 
 for (const n of walker(document)) {
   switch (n.type) {
-    case 'DOCUMENT':
-      n.node.title = mConv.phrase(LangType.s2t, n.text);
-      break;
     case 'TEXT':
       n.node.nodeValue = mConv.phrase(LangType.s2t, n.text);
       break;
@@ -87,7 +84,6 @@ For walker:
 
 ```typescript
 type ParsedNode =
-  | { type: 'DOCUMENT'; node: Document; text: string }
   | { type: 'ATTRIBUTE'; node: HTMLElement; text: string; attr: string }
   | { type: 'TEXT'; node: HTMLElement; text: string };
 
