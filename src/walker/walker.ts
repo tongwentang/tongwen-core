@@ -9,8 +9,6 @@ export const walker: Walker = dom => {
   const parsedNodes: ParsedNode[] = [];
   const tw = document.createTreeWalker(dom, filterNodeType(), { acceptNode });
 
-  parsedNodes.push(...parseNode(dom as HTMLElement));
-
   while (tw.nextNode()) {
     parsedNodes.push(...parseNode(tw.currentNode as HTMLElement));
   }
