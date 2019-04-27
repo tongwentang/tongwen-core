@@ -1,5 +1,9 @@
 # TongWen Core Changelog
 
+### v3.0.2
+- Fix
+  - Export `ParsedNode` type.
+
 ### v3.0.1
 - Add
   - Add converter and converter creator types.
