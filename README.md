@@ -21,11 +21,11 @@ Note: Example scripts are all written in TypeScript.
 An example for how to use converter:
 
 ```typescript
-import { createConveterMap, createConveterObj, LangType, SrcPack } from 'tongwen-core';
+import { createConverterMap, createConverterObj, LangType, SrcPack } from 'tongwen-core';
 
 const dics: SrcPack = { s2t: [{ 台湾: '台灣' }], t2s: [{ 台灣: '台湾' }] };
-const mConv = createConveterMap(dics);
-const oConv = createConveterObj(dics);
+const mConv = createConverterMap(dics);
+const oConv = createConverterObj(dics);
 const result = [mConv.phrase(LangType.s2t, '台湾'), oConv.phrase(LangType.s2t, '台湾')];
 console.log(result); // [ '台灣', '台灣' ]
 ```
@@ -39,10 +39,10 @@ Note: You should provide dictionaries when creating converter, no default dictio
 Here is an example for using converter and walker in web page.
 
 ```typescript
-import { createConveterMap, LangType, SrcPack, walker } from 'tongwen-core';
+import { createConverterMap, LangType, SrcPack, walker } from 'tongwen-core';
 
 const dics: SrcPack = { s2t: [{ 台湾: '台灣' }], t2s: [{ 台灣: '台湾' }] };
-const mConv = createConveterMap(dics);
+const mConv = createConverterMap(dics);
 
 for (const n of walker(document)) {
   switch (n.type) {
