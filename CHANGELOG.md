@@ -1,5 +1,14 @@
 # TongWen Core Changelog
 
+### v3.2.0
+- Fix
+  - Readme typo, `createConveter`* => `createConverter`*
+  - `extractAttrText` filter by `hasChinese` to make sure no empty text parsed node.
+- Refactor
+  - Rename `hasTargetAttr`(s) to `isTargetAttr`(s) for semantic.
+- Feature
+  - Add reject guard to `acceptNode` and `walker`, now reject unneeded node by `node.nodeName` even for tree walker root.
+
 ### v3.1.0
 - Refactor
   - Move parse node to independ function.
