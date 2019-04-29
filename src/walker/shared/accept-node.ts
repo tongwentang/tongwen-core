@@ -1,6 +1,6 @@
 import { hasChinese } from './has-chinese';
-import { hasTargetAttrs } from './has-target-attrs';
 import { isRejectNode } from './is-reject-node';
+import { isTargetAttrs } from './is-target-attrs';
 
 export const acceptNode = (node: HTMLElement) => {
   switch (node.nodeType) {
@@ -9,7 +9,7 @@ export const acceptNode = (node: HTMLElement) => {
     case Node.ELEMENT_NODE:
       return isRejectNode(node)
         ? NodeFilter.FILTER_REJECT
-        : hasTargetAttrs(node)
+        : isTargetAttrs(node)
         ? NodeFilter.FILTER_ACCEPT
         : NodeFilter.FILTER_SKIP;
     default:
