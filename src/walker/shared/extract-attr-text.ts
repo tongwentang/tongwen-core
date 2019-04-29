@@ -1,10 +1,11 @@
 import { targetAttrs } from './constant';
+import { hasChinese } from './has-chinese';
 
-export const extractAttrText = (elm: HTMLElement) =>
+export const extractAttrText = (node: HTMLElement) =>
   targetAttrs.reduce(
-    (col, attr) => {
-      col.push([attr, elm.getAttribute(attr)!]);
-      return col;
+    (parsedNodes, attr) => {
+      hasChinese(node.getAttribute(attr)!) && parsedNodes.push([attr, node.getAttribute(attr)!]);
+      return parsedNodes;
     },
     [] as [string, string][],
   );
