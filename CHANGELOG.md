@@ -1,5 +1,10 @@
 # TongWen Core Changelog
 
+### v3.2.1
+- Fix
+  - Update dependencis for security alerts.
+  - Update homepage and repo's url link.
+
 ### v3.2.0
 - Fix
   - Readme typo, `createConveter`* => `createConverter`*
