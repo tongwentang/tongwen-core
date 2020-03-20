@@ -1,5 +1,9 @@
 # TongWen Core Changelog
 
+### v.3.2.3
+- Fix
+  - Update deps for security alerts
+
 ### v3.2.2
 - chore
   - Update packages.

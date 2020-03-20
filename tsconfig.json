@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    /* Basic Options */
+    "incremental": true,
     "target": "es5",
     "module": "commonjs",
     "lib": ["esnext", "dom"],
@@ -9,11 +11,11 @@
     "outDir": "./lib",
     "rootDir": "./src",
     "skipLibCheck": true,
-    "composite": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "typeRoots": ["node_modules/@types"],
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": ["node_modules", "cjs", "esm"]
 }
