@@ -5,11 +5,13 @@
 ## 安裝
 
 Install by npm:
+
 ```bash
 $ npm install tongwen-core
 ```
 
 Install by yarn:
+
 ```bash
 $ yarn add tongwen-core
 ```
@@ -31,7 +33,7 @@ console.log(result); // [ '台灣', '台灣' ]
 ```
 
 > `createConverterMap` 跟 `createConverterObj` 的差別在於前者使用 es `Map` ， <br>
-> 後者使用一般的 `Object` 作為內部資料結構。請根據你的環境選擇使用的版本， <br> 
+> 後者使用一般的 `Object` 作為內部資料結構。請根據你的環境選擇使用的版本， <br>
 > 但在允許的情況下建議使用 es `Map` 的版本，因為效能可以提升 2.x 倍。
 
 注意：建立轉換器時必須提供字典檔，沒有預設字典檔。
@@ -58,6 +60,7 @@ for (const n of walker(document)) {
 ```
 
 ## 字典檔
+
 這個專案內提供的字典檔僅作為測試使用，並不建議直接使用它們當作正式的字典檔，因為它們是針對 v1.5 版新同文堂核心演算法的字典檔。我們計畫在未來釋出一個字典檔的獨立程式碼庫。
 
 ## API 及型別
@@ -67,9 +70,9 @@ for (const n of walker(document)) {
 ```typescript
 // The source dictionaries collection
 type SrcPack = {
-    s2t: Record<string, string>[];
-    t2s: Record<string, string>[];
-}
+  s2t: Record<string, string>[];
+  t2s: Record<string, string>[];
+};
 const dics: SrcPack = { s2t: [{ 台湾: '台灣' }], t2s: [{ 台灣: '台湾' }] };
 
 // Converter type
@@ -77,7 +80,7 @@ type Converter = {
   set: (src: SrcPack) => undefined;
   char: (type: LangType, text: string) => string;
   phrase: (type: LangType, text: string) => string;
-}
+};
 ```
 
 walker
@@ -94,14 +97,14 @@ type Walker = (dom: Node) => ParsedNode[];
 
 ### 開發建議
 
-* 編輯器：Visual Studio Code
-  * 取得最佳的 TypeScript 支援
-  * 套件：prettier - code formater, TypeScript Toolbox
-* 環境
-  * `node`
-  * `yarn`
-* `npm` 指令：
-  * `test`：測試撰寫的 TypeScript 是否有錯誤
+- 編輯器：Visual Studio Code
+  - 取得最佳的 TypeScript 支援
+  - 套件：prettier - code formater, TypeScript Toolbox
+- 環境
+  - `node`
+  - `yarn`
+- `npm` 指令：
+  - `test`：測試撰寫的 TypeScript 是否有錯誤
 
 ## 故事
 

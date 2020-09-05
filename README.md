@@ -5,11 +5,13 @@ A fast converter between Traditional Chinese and Simplified Chinese and a helper
 ## Installation
 
 Install by npm:
+
 ```bash
 npm install tongwen-core
 ```
 
 Install by yarn:
+
 ```bash
 yarn add tongwen-core
 ```
@@ -31,7 +33,7 @@ console.log(result); // [ '台灣', '台灣' ]
 ```
 
 > The difference between `createConverterMap` and `createConverterObj` is the former use es `Map` and <br>
-> the latter use plain `Object` as internal data structure. Use depend on your environment, <br> 
+> the latter use plain `Object` as internal data structure. Use depend on your environment, <br>
 > but the es version is highly recommended, due performance boost can up to 2.x time faster.
 
 Note: You should provide dictionaries when creating converter, no default dictionaries.
@@ -58,6 +60,7 @@ for (const n of walker(document)) {
 ```
 
 ## Dictionaries
+
 Dictionaries that included in this project is use only for test, you can use them but not recommmanded, since they are for v1.5 New TongWenTang Core algorithm. We plan to release a independent repository in the future.
 
 ## API and Types
@@ -67,9 +70,9 @@ For converter
 ```typescript
 // The source dictionaries collection
 type SrcPack = {
-    s2t: Record<string, string>[];
-    t2s: Record<string, string>[];
-}
+  s2t: Record<string, string>[];
+  t2s: Record<string, string>[];
+};
 const dics: SrcPack = { s2t: [{ 台湾: '台灣' }], t2s: [{ 台灣: '台湾' }] };
 
 // Converter type
@@ -77,7 +80,7 @@ type Converter = {
   set: (src: SrcPack) => undefined;
   char: (type: LangType, text: string) => string;
   phrase: (type: LangType, text: string) => string;
-}
+};
 ```
 
 For walker:
