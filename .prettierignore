@@ -1,0 +1,9 @@
+cjs
+esm
+node_modules
+.gitignore
+.prettierignore
+.prettierrc
+LICENSE
+*.tsbuildinfo
+yarn.lock
