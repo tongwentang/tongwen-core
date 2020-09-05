@@ -1,6 +1,7 @@
 cjs
 esm
 node_modules
+CHANGELOG.md
 .gitignore
 .prettierignore
 .prettierrc
