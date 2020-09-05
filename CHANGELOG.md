@@ -1,57 +1,57 @@
 # TongWen Core Changelog
 
-### v.3.2.3
+All notable changes to the "dark-lavender" extension will be documented in this file.
 
-- Fix
+Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+
+## [3.2.4] - 2020-09-06
+### Security
+- Update deps for security alerts
+
+## [3.2.3]
+### Security
   - Update deps for security alerts
 
-### v3.2.2
+## [3.2.2]
+### Security
+  - Update dependencies.
 
-- chore
-  - Update packages.
-
-### v3.2.1
-
-- Fix
-  - Update dependencis for security alerts.
+## [3.2.1]
+### Fixed
   - Update homepage and repo's url link.
+### Security
+  - Update dependencis for security alerts.
 
-### v3.2.0
-
-- Fix
+## [3.2.0]
+### Fixed
   - Readme typo, `createConveter`_ => `createConverter`_
   - `extractAttrText` filter by `hasChinese` to make sure no empty text parsed node.
-- Refactor
+### Changed
   - Rename `hasTargetAttr`(s) to `isTargetAttr`(s) for semantic.
-- Feature
+### Added
   - Add reject guard to `acceptNode` and `walker`, now reject unneeded node by `node.nodeName` even for tree walker root.
 
-### v3.1.0
-
-- Refactor
+## [3.1.0]
+### Changed
   - Move parse node to independ function.
   - Remove unneeded document node in parse node function.
-- Feature
+### Added
   - export all helper functions in walker.
 
-### v3.0.2
-
-- Fix
+## [3.0.2]
+### Fixed
   - Export `ParsedNode` type.
 
-### v3.0.1
-
-- Feature
+## [3.0.1]
+### Added
   - Add converter and converter creator types.
 
-### v3.0.0
+## [3.0.0]
 
 Converter in version 3 is completely rewrite, class pattern is replace by module pattern as well as Parser.
-
 Parser is replace by walker and do not handle for update node value any more, just return the parsed nodes.
-
 For more detail, please check latest README.
 
-### v2.x.x
+## [2.x.x]
 
 - Please check here.
