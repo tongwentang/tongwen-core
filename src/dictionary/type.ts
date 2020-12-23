@@ -6,7 +6,7 @@ export type DicObj = TObj<string>;
 
 export type DicMap = TMap<string>;
 
-export const enum LangType {
+export enum LangType {
   s2t = 's2t',
   t2s = 't2s',
 }
