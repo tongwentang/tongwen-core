@@ -4,47 +4,53 @@ All notable changes to the "dark-lavender" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [3.2.5] - 2020-12-24
+### Security
+- Update deps for security alerts
+### Changed
+- export `LangType` as `enum` instead of `const enum` due `isolatedModules: true`
+
 ## [3.2.4] - 2020-09-06
 ### Security
 - Update deps for security alerts
 
 ## [3.2.3]
 ### Security
-  - Update deps for security alerts
+- Update deps for security alerts
 
 ## [3.2.2]
 ### Security
-  - Update dependencies.
+- Update dependencies.
 
 ## [3.2.1]
 ### Fixed
-  - Update homepage and repo's url link.
+- Update homepage and repo's url link.
 ### Security
-  - Update dependencis for security alerts.
+- Update dependencis for security alerts.
 
 ## [3.2.0]
 ### Fixed
-  - Readme typo, `createConveter`_ => `createConverter`_
-  - `extractAttrText` filter by `hasChinese` to make sure no empty text parsed node.
+- Readme typo, `createConveter`_ => `createConverter`_
+- `extractAttrText` filter by `hasChinese` to make sure no empty text parsed node.
 ### Changed
-  - Rename `hasTargetAttr`(s) to `isTargetAttr`(s) for semantic.
+- Rename `hasTargetAttr`(s) to `isTargetAttr`(s) for semantic.
 ### Added
-  - Add reject guard to `acceptNode` and `walker`, now reject unneeded node by `node.nodeName` even for tree walker root.
+- Add reject guard to `acceptNode` and `walker`, now reject unneeded node by `node.nodeName` even for tree walker root.
 
 ## [3.1.0]
 ### Changed
-  - Move parse node to independ function.
-  - Remove unneeded document node in parse node function.
+- Move parse node to independ function.
+- Remove unneeded document node in parse node function.
 ### Added
-  - export all helper functions in walker.
+- export all helper functions in walker.
 
 ## [3.0.2]
 ### Fixed
-  - Export `ParsedNode` type.
+- Export `ParsedNode` type.
 
 ## [3.0.1]
 ### Added
-  - Add converter and converter creator types.
+- Add converter and converter creator types.
 
 ## [3.0.0]
 
