@@ -27,6 +27,7 @@
   },
   "main": "./cjs/index.js",
   "module": "./esm/index.js",
+  "es2015": "./esm/index.js",
   "types": "./esm/index.d.ts",
   "sideEffect": false,
   "files": [
@@ -42,7 +43,8 @@
     "format": "prettier --write *.*",
     "build:cjs": "tsc -p tsconfig.build.cjs.json",
     "build:esm": "tsc -p tsconfig.build.esm.json",
-    "build": "npm run build:cjs && npm run build:esm"
+    "build": "npm run build:cjs && npm run build:esm",
+    "build:clean": "npm run clean && npm run build"
   },
   "lint-staged": {
     "*./src/**/*.{js,jsx,ts,tsx,css,md}": [
