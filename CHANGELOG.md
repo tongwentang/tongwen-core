@@ -4,7 +4,13 @@ All notable changes to the "dark-lavender" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
-## [4.0.0] - 2021-04-23
+## [4.0.1] - 2021-04-23
+
+### Fixed
+
+- Add `attr` property to `ParsedElementNode`.
+
+## [4.0.0] - 2021-04-23 (Deprecated)
 
 ### Added
 
