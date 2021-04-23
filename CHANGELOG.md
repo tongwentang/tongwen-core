@@ -4,6 +4,20 @@ All notable changes to the "dark-lavender" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [4.0.0] - 2021-04-23
+
+### Added
+
+- Introduce a new `walkNode` node parser, which resolved many issues in tongwentang/tongwentang-extension.
+
+### Fixed
+
+- Export all utitlies functions and constants use with `walkNode` which can help developr customize `walkNode` behavior. Resolved #6.
+
+### Deprecated
+
+- Last parser `walker` is deprecated now and will be remove on next major version (v5.0.0) as well as its functions and constants.
+
 ## [3.2.5] - 2020-12-24
 
 ### Security
