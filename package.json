@@ -40,7 +40,7 @@
     "test:tsc": "tsc --noEmit --declaration false --incremental false",
     "update": "yarn upgradeInteractive",
     "clean": "rm -fr cjs && rm -fr esm && rm -f *.tsbuildinfo",
-    "format": "prettier --write *.*",
+    "format": "prettier --write *.* --ignore-unknown",
     "build:cjs": "tsc -p tsconfig.build.cjs.json",
     "build:esm": "tsc -p tsconfig.build.esm.json",
     "build": "npm run build:cjs && npm run build:esm",
