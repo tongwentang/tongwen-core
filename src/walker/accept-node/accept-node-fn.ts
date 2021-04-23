@@ -31,7 +31,7 @@ export type ParseElementNode = (elm: Element) => ParsedElementNode[];
 export const parseElementNode: ParseElementNode = elm => {
   return TARGET_NODE_ATTRIBUTES.reduce<ParsedElementNode[]>((col, attr) => {
     hasTargetContent(elm.getAttribute(attr)!) &&
-      col.push({ type: 'ELEMENT', node: elm, text: elm.getAttribute(attr)! });
+      col.push({ type: 'ELEMENT', node: elm, attr, text: elm.getAttribute(attr)! });
     return col;
   }, []);
 };

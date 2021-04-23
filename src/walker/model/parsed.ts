@@ -7,6 +7,7 @@ export interface ParsedTextNode {
 export interface ParsedElementNode {
   type: 'ELEMENT';
   node: Element;
+  attr: string;
   text: string;
 }
 

@@ -96,6 +96,7 @@ interface ParsedTextNode {
 interface ParsedElementNode {
   type: 'ELEMENT';
   node: Element;
+  attr: string;
   text: string;
 }
 
