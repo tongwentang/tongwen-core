@@ -41,22 +41,22 @@ Note: You should provide dictionaries when creating converter, no default dictio
 Here is an example for using converter and walker in web page.
 
 ```typescript
-import { createConverterMap, LangType, SrcPack, walker } from 'tongwen-core';
+import { createConverterMap, LangType, SrcPack, walkerNode } from 'tongwen-core';
 
 const dics: SrcPack = { s2t: [{ 台湾: '台灣' }], t2s: [{ 台灣: '台湾' }] };
 const mConv = createConverterMap(dics);
+const parseds = walkNode(document);
 
-for (const n of walker(document)) {
-  switch (n.type) {
-    case 'TEXT':
-      n.node.nodeValue = mConv.phrase(LangType.s2t, n.text);
-      break;
-    case 'ATTRIBUTE':
-      n.node.setAttribute(n.attr, mConv.phrase(LangType.s2t, n.text));
-    default:
-      break;
-  }
-}
+parseds; // parsed result as an array
+```
+
+```typescript
+import { walkerNode } from 'tongwen-core';
+
+// customize by passing custom function(s)
+const parseds = walkNode(document, { isRejectNode: node => false });
+
+parseds; // parsed result as an array
 ```
 
 ## Dictionaries
@@ -86,11 +86,32 @@ type Converter = {
 For walker:
 
 ```typescript
-type ParsedNode =
-  | { type: 'ATTRIBUTE'; node: HTMLElement; text: string; attr: string }
-  | { type: 'TEXT'; node: HTMLElement; text: string };
+// ParsedResult
+interface ParsedTextNode {
+  type: 'TEXT';
+  node: Node;
+  text: string;
+}
 
-type Walker = (dom: Node) => ParsedNode[];
+interface ParsedElementNode {
+  type: 'ELEMENT';
+  node: Element;
+  text: string;
+}
+
+type ParsedResult = ParsedTextNode | ParsedElementNode;
+
+// WalkNode
+type WalkNode = (node: Node, anf?: Partial<AcceptNodeFn>) => ParsedResult[];
+
+interface AcceptNodeFn {
+  hasTargetContent: (text: string | null) => boolean;
+  isRejectNode: (node: Node) => boolean;
+  isEditableElement: (elm: Element) => boolean;
+  hasTargetAttributes: (elm: Element) => boolean;
+  parseTextNode: (node: Node) => ParsedTextNode;
+  parseElementNode: (elm: Element) => ParsedElementNode[];
+}
 ```
 
 For more detail, please check the source code.
