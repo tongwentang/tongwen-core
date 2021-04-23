@@ -1,6 +1,9 @@
 import { ParsedNode } from '../types';
 import { extractAttrText } from './extract-attr-text';
 
+/**
+ * @deprecated will remove on next major version v5.0.0
+ */
 export const parseNode = (node: HTMLElement): ParsedNode[] => {
   switch (node.nodeType) {
     case Node.TEXT_NODE:

@@ -2,6 +2,9 @@ import { hasChinese } from './has-chinese';
 import { isRejectNode } from './is-reject-node';
 import { isTargetAttrs } from './is-target-attrs';
 
+/**
+ * @deprecated will remove on next major version v5.0.0
+ */
 export const acceptNode = (node: HTMLElement) => {
   switch (node.nodeType) {
     case Node.TEXT_NODE:
