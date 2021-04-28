@@ -12,12 +12,12 @@ export const isRejectNode: IsRejectNode = node => {
   return REJECT_NODE_NAMES.indexOf(node.nodeName) !== -1;
 };
 
-export type IsEditableElement = (elm: Element) => boolean;
+export type IsEditableElement = (elm: HTMLElement) => boolean;
 export const isEditableElement: IsEditableElement = elm => {
   return EDITABLE_NODE_NAMES.indexOf(elm.nodeName) !== -1 || elm.getAttribute('contenteditable') === 'true';
 };
 
-export type HasTargetAttributes = (elm: Element) => boolean;
+export type HasTargetAttributes = (elm: HTMLElement) => boolean;
 export const hasTargetAttributes: HasTargetAttributes = elm => {
   return TARGET_NODE_ATTRIBUTES.some(attr => elm.hasAttribute(attr));
 };
@@ -27,7 +27,7 @@ export const parseTextNode: ParseTextNode = node => {
   return { type: 'TEXT', node, text: node.nodeValue! };
 };
 
-export type ParseElementNode = (elm: Element) => ParsedElementNode[];
+export type ParseElementNode = (elm: HTMLElement) => ParsedElementNode[];
 export const parseElementNode: ParseElementNode = elm => {
   return TARGET_NODE_ATTRIBUTES.reduce<ParsedElementNode[]>((col, attr) => {
     hasTargetContent(elm.getAttribute(attr)!) &&

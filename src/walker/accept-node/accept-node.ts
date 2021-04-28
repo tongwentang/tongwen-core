@@ -45,10 +45,10 @@ export const acceptNodeWith = (parseds: ParsedResult[], anf: Partial<AcceptNodeF
     case Node.ELEMENT_NODE:
       return fn.isRejectNode(node)
         ? NodeFilter.FILTER_REJECT
-        : fn.isEditableElement(node as Element)
-        ? (parseds.push(...fn.parseElementNode(node as Element)), NodeFilter.FILTER_REJECT)
-        : fn.hasTargetAttributes(node as Element)
-        ? (parseds.push(...fn.parseElementNode(node as Element)), NodeFilter.FILTER_ACCEPT)
+        : fn.isEditableElement(node as HTMLElement)
+        ? (parseds.push(...fn.parseElementNode(node as HTMLElement)), NodeFilter.FILTER_REJECT)
+        : fn.hasTargetAttributes(node as HTMLElement)
+        ? (parseds.push(...fn.parseElementNode(node as HTMLElement)), NodeFilter.FILTER_ACCEPT)
         : NodeFilter.FILTER_SKIP;
     default:
       return NodeFilter.FILTER_SKIP;
