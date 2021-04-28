@@ -4,6 +4,16 @@ All notable changes to the "dark-lavender" extension will be documented in this 
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [4.1.0] - 2021-04-28
+
+### Fixed
+
+- Ensure skip or reject all contenteditable node. (#7)
+
+### Changed
+
+- Introduce `IsTargetTextNode` to replace `HasTargetContent` in `AcceptNodeFn`.
+
 ## [4.0.1] - 2021-04-23
 
 ### Fixed
