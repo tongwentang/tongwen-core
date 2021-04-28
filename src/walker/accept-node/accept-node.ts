@@ -1,23 +1,23 @@
 import { ParsedResult } from '../model/parsed';
 import type {
   HasTargetAttributes,
-  HasTargetContent,
   IsEditableElement,
   IsRejectNode,
+  IsTargetTextNode,
   ParseElementNode,
   ParseTextNode,
 } from './accept-node-fn';
 import {
   hasTargetAttributes,
-  hasTargetContent,
   isEditableElement,
   isRejectNode,
+  isTargetTextNode,
   parseElementNode,
   parseTextNode,
 } from './accept-node-fn';
 
 export interface AcceptNodeFn {
-  hasTargetContent: HasTargetContent;
+  isTargetTextNode: IsTargetTextNode;
   isRejectNode: IsRejectNode;
   isEditableElement: IsEditableElement;
   hasTargetAttributes: HasTargetAttributes;
@@ -26,7 +26,7 @@ export interface AcceptNodeFn {
 }
 
 const acceptNodefn: AcceptNodeFn = {
-  hasTargetContent,
+  isTargetTextNode,
   isRejectNode,
   isEditableElement,
   hasTargetAttributes,
@@ -39,7 +39,7 @@ export const acceptNodeWith = (parseds: ParsedResult[], anf: Partial<AcceptNodeF
 
   switch (node.nodeType) {
     case Node.TEXT_NODE:
-      return fn.hasTargetContent(node.nodeValue)
+      return fn.isTargetTextNode(node)
         ? (parseds.push(fn.parseTextNode(node)), NodeFilter.FILTER_ACCEPT)
         : NodeFilter.FILTER_SKIP;
     case Node.ELEMENT_NODE:

@@ -7,6 +7,11 @@ export const hasTargetContent: HasTargetContent = text => {
   return TargetCharRegex.test(text!);
 };
 
+export type IsTargetTextNode = (node: Node) => boolean;
+export const isTargetTextNode: IsTargetTextNode = node => {
+  return !node.parentElement?.isContentEditable && TargetCharRegex.test(node.nodeValue!);
+};
+
 export type IsRejectNode = (node: Node) => boolean;
 export const isRejectNode: IsRejectNode = node => {
   return REJECT_NODE_NAMES.indexOf(node.nodeName) !== -1;
@@ -14,7 +19,7 @@ export const isRejectNode: IsRejectNode = node => {
 
 export type IsEditableElement = (elm: HTMLElement) => boolean;
 export const isEditableElement: IsEditableElement = elm => {
-  return EDITABLE_NODE_NAMES.indexOf(elm.nodeName) !== -1 || elm.getAttribute('contenteditable') === 'true';
+  return EDITABLE_NODE_NAMES.indexOf(elm.nodeName) !== -1 || elm.isContentEditable;
 };
 
 export type HasTargetAttributes = (elm: HTMLElement) => boolean;
