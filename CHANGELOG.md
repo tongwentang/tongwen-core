@@ -1,8 +1,8 @@
-# TongWen Core Changelog
+# Changelog
 
-All notable changes to the "dark-lavender" extension will be documented in this file.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### [4.1.1](https://github.com/tongwentang/tongwen-core/compare/4.1.0...4.1.1) (2021-07-12)
 
 ## [4.1.0] - 2021-04-28
 
