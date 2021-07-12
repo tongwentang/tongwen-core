@@ -61,8 +61,8 @@
   "devDependencies": {
     "@types/jest": "^26.0.22",
     "@types/jsdom": "^16.2.10",
-    "@types/node": "~14.14.41",
-    "husky": "^6.0.0",
+    "@types/node": "~16.3.1",
+    "husky": "^7.0.1",
     "jest": "^27.0.3",
     "lint-staged": "^11.0.0",
     "prettier": "^2.1.1",
