@@ -53,11 +53,6 @@
       "prettier --write --ignore-unknown"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "devDependencies": {
     "@types/jest": "^26.0.22",
     "@types/jsdom": "^16.2.10",
