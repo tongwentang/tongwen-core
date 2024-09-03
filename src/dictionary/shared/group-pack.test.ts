@@ -1,9 +1,17 @@
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
 import { GroupedPack, SrcPack } from '../type';
 import { groupPack } from './group-pack';
 
 export const srcPack: SrcPack = {
-  s2t: [{ 个: '個', 们: '們' }, { 一只: '一隻', 一天后: '一天後' }],
-  t2s: [{ 個: '个', 們: '们' }, { 一隻: '一只', 一天后: '一天後' }],
+  s2t: [
+    { 个: '個', 们: '們' },
+    { 一只: '一隻', 一天后: '一天後' },
+  ],
+  t2s: [
+    { 個: '个', 們: '们' },
+    { 一隻: '一只', 一天后: '一天後' },
+  ],
 };
 
 export const groupedPack: GroupedPack = {
@@ -14,6 +22,6 @@ export const groupedPack: GroupedPack = {
 describe('Test groupPack functionality', () => {
   it('should convert srcPack to groupPack', () => {
     const result = groupPack(srcPack);
-    expect(result).toEqual(groupedPack);
+    assert.deepEqual(result, groupedPack);
   });
 });

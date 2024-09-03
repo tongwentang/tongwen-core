@@ -1,3 +1,5 @@
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
 import { groupedPack } from '../shared/group-pack.test';
 import { IndexedPackObj } from '../type';
 import { indexPackObj } from './index-pack-obj';
@@ -22,6 +24,6 @@ export const indexedPackObj: IndexedPackObj = {
 describe('Test indexPack functionality', () => {
   it('should convert groupedPack to indexedPack', () => {
     const result = indexPackObj(groupedPack);
-    expect(result).toEqual(indexedPackObj);
+    assert.deepEqual(result, indexedPackObj);
   });
 });

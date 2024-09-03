@@ -1,3 +1,5 @@
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
 import { LangType, SrcPack } from '../dictionary/type';
 import { createConverterMap } from './map';
 import { createConverterObj } from './obj/create-converter-obj';
@@ -17,13 +19,13 @@ const simplified = '余光中的余光有着无限的情怀';
 
 describe('Test mConv funtionality', () => {
   it('should convert simplified to traditional', () => {
-    expect(mConv.phrase(LangType.s2t, simplified)).toBe(traditional);
+    assert.equal(mConv.phrase(LangType.s2t, simplified), traditional);
 
-    expect(oConv.phrase(LangType.s2t, simplified)).toBe(traditional);
+    assert.equal(oConv.phrase(LangType.s2t, simplified), traditional);
   });
 
   it('should convert traditional to simplified', () => {
-    expect(mConv.phrase(LangType.t2s, traditional)).toBe(simplified);
-    expect(oConv.phrase(LangType.t2s, traditional)).toBe(simplified);
+    assert.equal(mConv.phrase(LangType.t2s, traditional), simplified);
+    assert.equal(oConv.phrase(LangType.t2s, traditional), simplified);
   });
 });

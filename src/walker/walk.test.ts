@@ -1,13 +1,12 @@
-/**
- * @jest-environment jsdom
- */
-
 import { JSDOM } from 'jsdom';
+import assert from 'node:assert';
+import { describe, it } from 'node:test';
+import './mock';
 import { ParsedResult } from './model/parsed';
 import { walkNode } from './walk';
 
 describe('test walkNode', () => {
-  it('should extract parsed results', () => {
+  it('should extract parsed results', t => {
     const dom = new JSDOM(`
       <!DOCTYPE html>
       <body>
@@ -20,9 +19,6 @@ describe('test walkNode', () => {
         </div>
       </body>
     `);
-
-    const spy = jest.spyOn(global, 'document', 'get');
-    spy.mockImplementation(() => dom.window.document);
 
     const div = dom.window.document.querySelector('div')!;
     const [span1] = Array.from(dom.window.document.querySelectorAll('span'));
@@ -37,7 +33,7 @@ describe('test walkNode', () => {
       { type: 'ELEMENT', node: a, attr: 'title', text: '首頁' },
     ];
 
-    expect(parseds).toEqual(expected);
+    assert.deepEqual(parseds, expected);
   });
 
   it('should extract attributes only for editable element', () => {
@@ -50,14 +46,12 @@ describe('test walkNode', () => {
       </body>
     `);
 
-    const spy = jest.spyOn(global, 'document', 'get');
-    spy.mockImplementation(() => dom.window.document);
     const node = dom.window.document.querySelector('div#editable')!;
     const a = node.children[0] as HTMLAnchorElement;
     (a as any).isContentEditable = true; // JSDom does not support isContentEditable yet
     const parseds = walkNode(a);
     const expected: ParsedResult[] = [{ type: 'ELEMENT', node: a, attr: 'title', text: '首頁' }];
 
-    expect(parseds).toEqual(expected);
+    assert.deepEqual(parseds, expected);
   });
 });
