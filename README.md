@@ -61,7 +61,9 @@ parseds; // parsed result as an array
 
 ## Dictionaries
 
-Dictionaries that included in this project is use only for test, you can use them but not recommmanded, since they are for v1.5 New TongWenTang Core algorithm. We plan to release a independent repository in the future.
+Dictionaries that included in this project is use only for test, you can use them but not recommmanded, since they are for v1.5 New TongWenTang Core algorithm.
+
+In practice, we recommend to use [tongwen-dict](https://github.com/tongwentang/tongwen-dict/blob/main/README.md#usage).
 
 ## API and Types
 
