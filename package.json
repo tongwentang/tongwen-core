@@ -38,7 +38,7 @@
   "scripts": {
     "test": "jest --maxWorkers=50%",
     "test:tsc": "tsc --noEmit --declaration false --incremental false",
-    "update": "yarn upgradeInteractive",
+    "update": "ncu -i --format=group",
     "clean": "rm -fr cjs && rm -fr esm && rm -f *.tsbuildinfo",
     "format": "prettier --write *.* --ignore-unknown",
     "build:cjs": "tsc -p tsconfig.build.cjs.json",
