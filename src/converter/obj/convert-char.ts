@@ -11,5 +11,4 @@ const convert = (dic: DicObj, text: string) => {
   return converted;
 };
 
-export const convertChar = ({ single }: IndexedPairObj, text: string) =>
-  isEmpty(text) ? '' : convert(single, text);
+export const convertChar = ({ single }: IndexedPairObj, text: string) => (isEmpty(text) ? '' : convert(single, text));

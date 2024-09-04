@@ -13,8 +13,8 @@ export const acceptNode = (node: HTMLElement) => {
       return isRejectNode(node)
         ? NodeFilter.FILTER_REJECT
         : isTargetAttrs(node)
-        ? NodeFilter.FILTER_ACCEPT
-        : NodeFilter.FILTER_SKIP;
+          ? NodeFilter.FILTER_ACCEPT
+          : NodeFilter.FILTER_SKIP;
     default:
       return NodeFilter.FILTER_SKIP;
   }

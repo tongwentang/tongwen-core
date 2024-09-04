@@ -1,24 +1,13 @@
-import {
-  DicObj,
-  GroupedPack,
-  GroupedPair,
-  IndexedMultiObj,
-  IndexedObj,
-  IndexedPackObj,
-  IndexedPairObj,
-} from '../type';
+import { DicObj, GroupedPack, GroupedPair, IndexedMultiObj, IndexedObj, IndexedPackObj, IndexedPairObj } from '../type';
 
 const indexMulti = (multi: DicObj): IndexedMultiObj =>
-  Object.entries(multi).reduce(
-    (list, [key, value]) => {
-      const index = key.substring(0, 2);
-      const indexed: IndexedObj = list[index] || (list[index] = { max: 0, indies: {} });
-      key.length > indexed.max && (indexed.max = key.length);
-      indexed.indies[key] = value;
-      return list;
-    },
-    {} as IndexedMultiObj,
-  );
+  Object.entries(multi).reduce((list, [key, value]) => {
+    const index = key.substring(0, 2);
+    const indexed: IndexedObj = list[index] || (list[index] = { max: 0, indies: {} });
+    key.length > indexed.max && (indexed.max = key.length);
+    indexed.indies[key] = value;
+    return list;
+  }, {} as IndexedMultiObj);
 
 const indexSuit = ({ single, multi }: GroupedPair): IndexedPairObj => ({
   single,

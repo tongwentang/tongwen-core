@@ -32,5 +32,4 @@ const convert = ({ single, multi }: IndexedPairObj, text: string) => {
   return converted;
 };
 
-export const convertPhrase = (pack: IndexedPairObj, text: string) =>
-  isEmpty(text) ? '' : convert(pack, text);
+export const convertPhrase = (pack: IndexedPairObj, text: string) => (isEmpty(text) ? '' : convert(pack, text));

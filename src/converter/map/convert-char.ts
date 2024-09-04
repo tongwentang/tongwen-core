@@ -11,5 +11,4 @@ const convert = (dic: DicMap, text: string) => {
   return converted;
 };
 
-export const convertChar = ({ single }: IndexedPairMap, text: string) =>
-  isEmpty(text) ? '' : convert(single, text);
+export const convertChar = ({ single }: IndexedPairMap, text: string) => (isEmpty(text) ? '' : convert(single, text));

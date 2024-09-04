@@ -32,5 +32,4 @@ const convert = ({ single, multi }: IndexedPairMap, text: string) => {
   return converted;
 };
 
-export const convertPhrase = (pack: IndexedPairMap, text: string) =>
-  isEmpty(text) ? '' : convert(pack, text);
+export const convertPhrase = (pack: IndexedPairMap, text: string) => (isEmpty(text) ? '' : convert(pack, text));

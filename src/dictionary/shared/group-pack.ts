@@ -5,9 +5,7 @@ const mergeList = (list: Record<string, string>[]) => Object.assign({}, ...list)
 const group = (words: Record<string, string>): GroupedPair =>
   Object.entries(words).reduce(
     (grouped, [key, value]) =>
-      key.length > 1
-        ? ((grouped.multi[key] = value), grouped)
-        : ((grouped.single[key] = value), grouped),
+      key.length > 1 ? ((grouped.multi[key] = value), grouped) : ((grouped.single[key] = value), grouped),
     { single: {}, multi: {} } as GroupedPair,
   );
 

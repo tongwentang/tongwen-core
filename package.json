@@ -40,7 +40,7 @@
     "test:tsc": "tsc --noEmit --declaration false --incremental false",
     "update": "ncu -i --format=group",
     "clean": "rm -fr cjs && rm -fr esm && rm -f *.tsbuildinfo",
-    "format": "prettier --write *.* --ignore-unknown",
+    "format": "prettier --write **/*.* --ignore-unknown",
     "build:cjs": "tsc -p tsconfig.build.cjs.json",
     "build:esm": "tsc -p tsconfig.build.esm.json",
     "build": "npm run build:cjs && npm run build:esm",
@@ -59,7 +59,7 @@
     "husky": "^7.0.1",
     "jsdom": "^25.0.0",
     "lint-staged": "^11.0.0",
-    "prettier": "^2.1.1",
+    "prettier": "^3.3.3",
     "standard-version": "^9.2.0",
     "tsx": "^4.19.0",
     "typescript": "^4.3.2"

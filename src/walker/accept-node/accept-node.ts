@@ -34,23 +34,25 @@ const acceptNodefn: AcceptNodeFn = {
   parseElementNode,
 };
 
-export const acceptNodeWith = (parseds: ParsedResult[], anf: Partial<AcceptNodeFn>) => (node: Node): number => {
-  const fn = { ...acceptNodefn, ...anf };
+export const acceptNodeWith =
+  (parseds: ParsedResult[], anf: Partial<AcceptNodeFn>) =>
+  (node: Node): number => {
+    const fn = { ...acceptNodefn, ...anf };
 
-  switch (node.nodeType) {
-    case Node.TEXT_NODE:
-      return fn.isTargetTextNode(node)
-        ? (parseds.push(fn.parseTextNode(node)), NodeFilter.FILTER_ACCEPT)
-        : NodeFilter.FILTER_SKIP;
-    case Node.ELEMENT_NODE:
-      return fn.isRejectNode(node)
-        ? NodeFilter.FILTER_REJECT
-        : fn.isEditableElement(node as HTMLElement)
-        ? (parseds.push(...fn.parseElementNode(node as HTMLElement)), NodeFilter.FILTER_REJECT)
-        : fn.hasTargetAttributes(node as HTMLElement)
-        ? (parseds.push(...fn.parseElementNode(node as HTMLElement)), NodeFilter.FILTER_ACCEPT)
-        : NodeFilter.FILTER_SKIP;
-    default:
-      return NodeFilter.FILTER_SKIP;
-  }
-};
+    switch (node.nodeType) {
+      case Node.TEXT_NODE:
+        return fn.isTargetTextNode(node)
+          ? (parseds.push(fn.parseTextNode(node)), NodeFilter.FILTER_ACCEPT)
+          : NodeFilter.FILTER_SKIP;
+      case Node.ELEMENT_NODE:
+        return fn.isRejectNode(node)
+          ? NodeFilter.FILTER_REJECT
+          : fn.isEditableElement(node as HTMLElement)
+            ? (parseds.push(...fn.parseElementNode(node as HTMLElement)), NodeFilter.FILTER_REJECT)
+            : fn.hasTargetAttributes(node as HTMLElement)
+              ? (parseds.push(...fn.parseElementNode(node as HTMLElement)), NodeFilter.FILTER_ACCEPT)
+              : NodeFilter.FILTER_SKIP;
+      default:
+        return NodeFilter.FILTER_SKIP;
+    }
+  };
