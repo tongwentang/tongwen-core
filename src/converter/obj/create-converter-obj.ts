@@ -1,7 +1,7 @@
-import { createDicObj } from '../../dictionary/create-dic';
-import { ConverterCreator, ConvertText, UpdateSource } from '../types';
-import { convertChar } from './convert-char';
-import { convertPhrase } from './convert-phrase';
+import { createDicObj } from '../../dictionary/create-dic.js';
+import type { ConverterCreator, ConvertText, UpdateSource } from '../types.js';
+import { convertChar } from './convert-char.js';
+import { convertPhrase } from './convert-phrase.js';
 
 export const createConverterObj: ConverterCreator = src => {
   let dic = createDicObj(src || { s2t: [], t2s: [] });

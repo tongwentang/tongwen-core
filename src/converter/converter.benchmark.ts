@@ -1,11 +1,10 @@
-import { LangType } from '../dictionary/type';
-import { createConverterMap } from './map/create-converter-map';
-import { createConverterObj } from './obj/create-converter-obj';
-
-const defaultPS2TTable = require('../../dictionaries/s2t-char.json');
-const defaultPT2STable = require('../../dictionaries/t2s-phrase.json');
-const defaultS2TTable = require('../../dictionaries/s2t-char.json');
-const defaultT2STable = require('../../dictionaries/t2s-char.json');
+import defaultS2TTable from '../../dictionaries/s2t-char.json' with { type: 'JSON' };
+import defaultPS2TTable from '../../dictionaries/s2t-phrase.json' with { type: 'JSON' };
+import defaultT2STable from '../../dictionaries/t2s-char.json' with { type: 'JSON' };
+import defaultPT2STable from '../../dictionaries/t2s-phrase.json' with { type: 'JSON' };
+import { LangType } from '../dictionary/type.js';
+import { createConverterMap } from './map/create-converter-map.js';
+import { createConverterObj } from './obj/create-converter-obj.js';
 
 (async () => {
   const mConv = createConverterMap({

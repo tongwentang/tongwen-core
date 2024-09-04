@@ -1,6 +1,6 @@
-import { EDITABLE_NODE_NAMES, REJECT_NODE_NAMES, TARGET_NODE_ATTRIBUTES } from '../constant/constant';
-import { TargetCharRegex } from '../constant/regex';
-import { ParsedElementNode, ParsedTextNode } from '../model/parsed';
+import { EDITABLE_NODE_NAMES, REJECT_NODE_NAMES, TARGET_NODE_ATTRIBUTES } from '../constant/constant.js';
+import { TargetCharRegex } from '../constant/regex.js';
+import type { ParsedElementNode, ParsedTextNode } from '../model/parsed.js';
 
 export type HasTargetContent = (text: string | null) => boolean;
 export const hasTargetContent: HasTargetContent = text => {

@@ -1,6 +1,6 @@
-import { hasChinese } from './has-chinese';
-import { isRejectNode } from './is-reject-node';
-import { isTargetAttrs } from './is-target-attrs';
+import { hasChinese } from './has-chinese.js';
+import { isRejectNode } from './is-reject-node.js';
+import { isTargetAttrs } from './is-target-attrs.js';
 
 /**
  * @deprecated will remove on next major version v5.0.0

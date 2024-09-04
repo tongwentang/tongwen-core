@@ -1,5 +1,13 @@
-import { toEsMap } from '../shared/to-esmap';
-import { DicObj, GroupedPack, GroupedPair, IndexedMap, IndexedMultiMap, IndexedPackMap, IndexedPairMap } from '../type';
+import { toEsMap } from '../shared/to-esmap.js';
+import type {
+  DicObj,
+  GroupedPack,
+  GroupedPair,
+  IndexedMap,
+  IndexedMultiMap,
+  IndexedPackMap,
+  IndexedPairMap,
+} from '../type.js';
 
 const indexMulti = (multi: DicObj): IndexedMultiMap =>
   Object.entries(multi).reduce((list, [key, value]) => {

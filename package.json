@@ -25,26 +25,40 @@
   "bugs": {
     "url": "https://github.com/tongwentang/tongwen-core/issues"
   },
-  "main": "./cjs/index.js",
-  "module": "./esm/index.js",
-  "es2015": "./esm/index.js",
-  "types": "./esm/index.d.ts",
+  "type": "module",
+  "module": "./converter/index.js",
+  "types": "./converter/index.d.ts",
   "sideEffect": false,
+  "engines": {
+    "node": ">=20"
+  },
   "files": [
-    "cjs",
-    "esm",
-    "dictionaries"
+    "dist"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/converter/index.d.ts",
+      "import": "./dist/converter/index.js",
+      "default": "./dist/converter/index.js"
+    },
+    "./dictionaries": {
+      "types": "./dist/dictionary/index.d.ts",
+      "import": "./dist/dictionary/index.js",
+      "default": "./dist/dictionary/index.js"
+    },
+    "./walker": {
+      "types": "./dist/walker/index.d.ts",
+      "import": "./dist/walker/index.js",
+      "default": "./dist/walker/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "test": "node --import tsx --test src/**/*.test.ts",
-    "test:tsc": "tsc --noEmit --declaration false --incremental false",
+    "test:tsc": "tsc --noEmit",
     "update": "ncu -i --format=group",
-    "clean": "rm -fr cjs && rm -fr esm && rm -f *.tsbuildinfo",
     "format": "prettier --write **/*.* --ignore-unknown",
-    "build:cjs": "tsc -p tsconfig.build.cjs.json",
-    "build:esm": "tsc -p tsconfig.build.esm.json",
-    "build": "npm run build:cjs && npm run build:esm",
-    "build:clean": "npm run clean && npm run build",
+    "build": "tsup",
     "release": "standard-version -t \"\"",
     "prepare": "husky install"
   },
@@ -61,7 +75,8 @@
     "lint-staged": "^11.0.0",
     "prettier": "^3.3.3",
     "standard-version": "^9.2.0",
+    "tsup": "^8.2.4",
     "tsx": "^4.19.0",
-    "typescript": "^4.3.2"
+    "typescript": "^5.5.4"
   }
 }

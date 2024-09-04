@@ -1,5 +1,5 @@
-import { IndexedPairMap } from '../../dictionary/type';
-import { isEmpty } from '../shared/is-empty';
+import type { IndexedPairMap } from '../../dictionary/type.js';
+import { isEmpty } from '../shared/is-empty.js';
 
 const convert = ({ single, multi }: IndexedPairMap, text: string) => {
   let converted = '';

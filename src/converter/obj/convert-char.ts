@@ -1,5 +1,5 @@
-import { DicObj, IndexedPairObj } from '../../dictionary/type';
-import { isEmpty } from '../shared/is-empty';
+import type { DicObj, IndexedPairObj } from '../../dictionary/type.js';
+import { isEmpty } from '../shared/is-empty.js';
 
 const convert = (dic: DicObj, text: string) => {
   let converted = '';

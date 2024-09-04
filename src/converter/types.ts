@@ -1,4 +1,4 @@
-import { LangType, SrcPack } from '../dictionary';
+import { LangType, type SrcPack } from '../dictionary/type.js';
 
 export type UpdateSource = (src: SrcPack) => void;
 

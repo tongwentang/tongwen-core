@@ -2,8 +2,8 @@ import { JSDOM } from 'jsdom';
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
 import './mock';
-import { ParsedResult } from './model/parsed';
-import { walkNode } from './walk';
+import type { ParsedResult } from './model/parsed.js';
+import { walkNode } from './walk.js';
 
 describe('test walkNode', () => {
   it('should extract parsed results', t => {

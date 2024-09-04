@@ -1,5 +1,5 @@
-import { targetAttrs } from './constant';
-import { hasChinese } from './has-chinese';
+import { targetAttrs } from './constant.js';
+import { hasChinese } from './has-chinese.js';
 
 /**
  * @deprecated will remove on next major version v5.0.0

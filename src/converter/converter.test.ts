@@ -1,13 +1,12 @@
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
-import { LangType, SrcPack } from '../dictionary/type';
-import { createConverterMap } from './map';
-import { createConverterObj } from './obj/create-converter-obj';
-
-const s2tChar = require('../../dictionaries/s2t-char.json');
-const s2tPhrase = require('../../dictionaries/s2t-phrase.json');
-const t2sChar = require('../../dictionaries/t2s-char.json');
-const t2sPhrase = require('../../dictionaries/t2s-phrase.json');
+import s2tChar from '../../dictionaries/s2t-char.json' with { type: 'JSON' };
+import s2tPhrase from '../../dictionaries/s2t-phrase.json' with { type: 'JSON' };
+import t2sChar from '../../dictionaries/t2s-char.json' with { type: 'JSON' };
+import t2sPhrase from '../../dictionaries/t2s-phrase.json' with { type: 'JSON' };
+import { LangType, type SrcPack } from '../dictionary/type.js';
+import { createConverterMap } from './map/index.js';
+import { createConverterObj } from './obj/create-converter-obj.js';
 
 const srcPack: SrcPack = { s2t: [s2tChar, s2tPhrase], t2s: [t2sChar, t2sPhrase] };
 

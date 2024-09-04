@@ -1,5 +1,5 @@
-import { DicMap, IndexedPairMap } from '../../dictionary/type';
-import { isEmpty } from '../shared/is-empty';
+import type { DicMap, IndexedPairMap } from '../../dictionary/type.js';
+import { isEmpty } from '../shared/is-empty.js';
 
 const convert = (dic: DicMap, text: string) => {
   let converted = '';

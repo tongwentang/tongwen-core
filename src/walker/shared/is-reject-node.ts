@@ -1,4 +1,4 @@
-import { REJECT_NODE_NAMES } from '../constant/constant';
+import { REJECT_NODE_NAMES } from '../constant/constant.js';
 
 /**
  * @deprecated will remove on next major version v5.0.0

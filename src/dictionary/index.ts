@@ -1,2 +1,2 @@
-export * from './create-dic';
-export * from './type';
+export * from './create-dic.js';
+export * from './type.js';

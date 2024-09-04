@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
     /* Basic Options */
-    "incremental": true,
-    "target": "es5",
-    "module": "commonjs",
+    "target": "ESNext",
+    "module": "NodeNext",
     "lib": ["esnext", "dom"],
     "strict": true,
     "declaration": true,
@@ -12,11 +11,10 @@
     "rootDir": "./src",
     "skipLibCheck": true,
     "isolatedModules": true,
-    "moduleResolution": "node",
+    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["src"],
-  "exclude": ["**/node_modules", "**/.*/", "cjs", "esm"]
+  "include": ["src"]
 }

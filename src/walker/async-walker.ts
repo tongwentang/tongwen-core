@@ -1,7 +1,7 @@
-import { acceptNode } from './shared/accept-node';
-import { filterNodeType } from './shared/constant';
-import { extractAttrText } from './shared/extract-attr-text';
-import { ParsedNode } from './types';
+import { acceptNode } from './shared/accept-node.js';
+import { filterNodeType } from './shared/constant.js';
+import { extractAttrText } from './shared/extract-attr-text.js';
+import type { ParsedNode } from './types.js';
 
 /**
  * @deprecated will remove on next major version v5.0.0

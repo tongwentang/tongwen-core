@@ -1,5 +1,5 @@
-import { targetAttrs } from './constant';
-import { isTargetAttr } from './is-target-attr';
+import { targetAttrs } from './constant.js';
+import { isTargetAttr } from './is-target-attr.js';
 
 /**
  * @deprecated will remove on next major version v5.0.0

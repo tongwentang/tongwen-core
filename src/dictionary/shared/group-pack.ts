@@ -1,4 +1,4 @@
-import { GroupedPack, GroupedPair, SrcPack } from '../type';
+import type { GroupedPack, GroupedPair, SrcPack } from '../type.js';
 
 const mergeList = (list: Record<string, string>[]) => Object.assign({}, ...list);
 

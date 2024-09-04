@@ -1,1 +1,1 @@
-export * from './create-converter-obj';
+export * from './create-converter-obj.js';

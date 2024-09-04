@@ -1,8 +1,8 @@
-import { acceptNode } from './shared/accept-node';
-import { filterNodeType } from './shared/constant';
-import { isRejectNode } from './shared/is-reject-node';
-import { parseNode } from './shared/parse-node';
-import { ParsedNode } from './types';
+import { acceptNode } from './shared/accept-node.js';
+import { filterNodeType } from './shared/constant.js';
+import { isRejectNode } from './shared/is-reject-node.js';
+import { parseNode } from './shared/parse-node.js';
+import type { ParsedNode } from './types.js';
 
 /**
  * @deprecated will remove on next major version v5.0.0

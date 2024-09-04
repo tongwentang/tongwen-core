@@ -1,8 +1,8 @@
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
-import { groupedPack } from '../shared/group-pack.test';
-import { IndexedPackObj } from '../type';
-import { indexPackObj } from './index-pack-obj';
+import { groupedPack } from '../shared/group-pack.test.js';
+import type { IndexedPackObj } from '../type.js';
+import { indexPackObj } from './index-pack-obj.js';
 
 export const indexedPackObj: IndexedPackObj = {
   s2t: {

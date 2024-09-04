@@ -1,4 +1,12 @@
-import { DicObj, GroupedPack, GroupedPair, IndexedMultiObj, IndexedObj, IndexedPackObj, IndexedPairObj } from '../type';
+import type {
+  DicObj,
+  GroupedPack,
+  GroupedPair,
+  IndexedMultiObj,
+  IndexedObj,
+  IndexedPackObj,
+  IndexedPairObj,
+} from '../type.js';
 
 const indexMulti = (multi: DicObj): IndexedMultiObj =>
   Object.entries(multi).reduce((list, [key, value]) => {

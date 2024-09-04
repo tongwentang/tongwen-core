@@ -1,7 +1,7 @@
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
-import { GroupedPack, SrcPack } from '../type';
-import { groupPack } from './group-pack';
+import type { GroupedPack, SrcPack } from '../type.js';
+import { groupPack } from './group-pack.js';
 
 export const srcPack: SrcPack = {
   s2t: [

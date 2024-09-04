@@ -1,8 +1,8 @@
 import assert from 'node:assert';
 import { describe, it } from 'node:test';
-import { groupedPack } from '../shared/group-pack.test';
-import { IndexedPackMap } from '../type';
-import { indexPackMap } from './index-pack-map';
+import { groupedPack } from '../shared/group-pack.test.js';
+import type { IndexedPackMap } from '../type.js';
+import { indexPackMap } from './index-pack-map.js';
 
 export const indexedPackMap: IndexedPackMap = {
   s2t: {

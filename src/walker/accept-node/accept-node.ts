@@ -1,4 +1,4 @@
-import { ParsedResult } from '../model/parsed';
+import { ParsedResult } from '../model/parsed.js';
 import type {
   HasTargetAttributes,
   IsEditableElement,
@@ -6,7 +6,7 @@ import type {
   IsTargetTextNode,
   ParseElementNode,
   ParseTextNode,
-} from './accept-node-fn';
+} from './accept-node-fn.js';
 import {
   hasTargetAttributes,
   isEditableElement,
@@ -14,7 +14,7 @@ import {
   isTargetTextNode,
   parseElementNode,
   parseTextNode,
-} from './accept-node-fn';
+} from './accept-node-fn.js';
 
 export interface AcceptNodeFn {
   isTargetTextNode: IsTargetTextNode;

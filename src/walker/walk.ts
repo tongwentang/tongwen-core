@@ -1,6 +1,6 @@
-import { AcceptNodeFn, acceptNodeWith } from './accept-node/accept-node';
-import { TARGET_NODE_TYPE } from './constant/constant';
-import { ParsedResult } from './model/parsed';
+import { AcceptNodeFn, acceptNodeWith } from './accept-node/accept-node.js';
+import { TARGET_NODE_TYPE } from './constant/constant.js';
+import type { ParsedResult } from './model/parsed.js';
 
 export const walkNode = (node: Node, anf: Partial<AcceptNodeFn> = {}): ParsedResult[] => {
   const parseds: ParsedResult[] = [];

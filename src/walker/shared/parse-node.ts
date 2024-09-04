@@ -1,5 +1,5 @@
-import { ParsedNode } from '../types';
-import { extractAttrText } from './extract-attr-text';
+import type { ParsedNode } from '../types.js';
+import { extractAttrText } from './extract-attr-text.js';
 
 /**
  * @deprecated will remove on next major version v5.0.0

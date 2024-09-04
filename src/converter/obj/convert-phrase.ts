@@ -1,5 +1,5 @@
-import { IndexedPairObj } from '../../dictionary/type';
-import { isEmpty } from '../shared/is-empty';
+import type { IndexedPairObj } from '../../dictionary/type.js';
+import { isEmpty } from '../shared/is-empty.js';
 
 const convert = ({ single, multi }: IndexedPairObj, text: string) => {
   let converted = '';
