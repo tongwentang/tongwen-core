@@ -1,10 +1,10 @@
-import { AcceptNodeFn, acceptNodeWith } from './accept-node/accept-node.js';
+import { acceptNodeConfig, AcceptNodeConfig, acceptNodeWith } from './accept-node/accept-node.js';
 import { TARGET_NODE_TYPE } from './constant/constant.js';
 import type { ParsedResult } from './model/parsed.js';
 
-export const walkNode = (node: Node, anf: Partial<AcceptNodeFn> = {}): ParsedResult[] => {
+export const walkNode = (node: Node, config: Partial<AcceptNodeConfig> = {}): ParsedResult[] => {
   const parseds: ParsedResult[] = [];
-  const acceptNode = acceptNodeWith(parseds, anf);
+  const acceptNode = acceptNodeWith(parseds, { ...acceptNodeConfig, ...config });
 
   if (acceptNode(node) === NodeFilter.FILTER_REJECT) return parseds;
 

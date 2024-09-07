@@ -16,7 +16,7 @@ import {
   parseTextNode,
 } from './accept-node-fn.js';
 
-export interface AcceptNodeFn {
+export interface AcceptNodeConfig {
   isTargetTextNode: IsTargetTextNode;
   isRejectNode: IsRejectNode;
   isEditableElement: IsEditableElement;
@@ -25,7 +25,12 @@ export interface AcceptNodeFn {
   parseElementNode: ParseElementNode;
 }
 
-const acceptNodefn: AcceptNodeFn = {
+/**
+ * @deprecated Will removed at next major version v6.0.0, use {@link AcceptNodeConfig} instead.
+ */
+export type AcceptNodeFn = AcceptNodeConfig;
+
+export const acceptNodeConfig: AcceptNodeConfig = {
   isTargetTextNode,
   isRejectNode,
   isEditableElement,
@@ -35,22 +40,20 @@ const acceptNodefn: AcceptNodeFn = {
 };
 
 export const acceptNodeWith =
-  (parseds: ParsedResult[], anf: Partial<AcceptNodeFn>) =>
+  (parseds: ParsedResult[], config: AcceptNodeConfig) =>
   (node: Node): number => {
-    const fn = { ...acceptNodefn, ...anf };
-
     switch (node.nodeType) {
       case Node.TEXT_NODE:
-        return fn.isTargetTextNode(node)
-          ? (parseds.push(fn.parseTextNode(node)), NodeFilter.FILTER_ACCEPT)
+        return config.isTargetTextNode(node)
+          ? (parseds.push(config.parseTextNode(node)), NodeFilter.FILTER_ACCEPT)
           : NodeFilter.FILTER_SKIP;
       case Node.ELEMENT_NODE:
-        return fn.isRejectNode(node)
+        return config.isRejectNode(node)
           ? NodeFilter.FILTER_REJECT
-          : fn.isEditableElement(node as HTMLElement)
-            ? (parseds.push(...fn.parseElementNode(node as HTMLElement)), NodeFilter.FILTER_REJECT)
-            : fn.hasTargetAttributes(node as HTMLElement)
-              ? (parseds.push(...fn.parseElementNode(node as HTMLElement)), NodeFilter.FILTER_ACCEPT)
+          : config.isEditableElement(node as HTMLElement)
+            ? (parseds.push(...config.parseElementNode(node as HTMLElement)), NodeFilter.FILTER_REJECT)
+            : config.hasTargetAttributes(node as HTMLElement)
+              ? (parseds.push(...config.parseElementNode(node as HTMLElement)), NodeFilter.FILTER_ACCEPT)
               : NodeFilter.FILTER_SKIP;
       default:
         return NodeFilter.FILTER_SKIP;
