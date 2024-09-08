@@ -39,16 +39,19 @@
     ".": {
       "types": "./dist/converter/index.d.ts",
       "import": "./dist/converter/index.js",
+      "require": "./dist/converter/index.cjs",
       "default": "./dist/converter/index.js"
     },
     "./dictionaries": {
       "types": "./dist/dictionary/index.d.ts",
       "import": "./dist/dictionary/index.js",
+      "require": "./dist/dictionary/index.cjs",
       "default": "./dist/dictionary/index.js"
     },
     "./walker": {
       "types": "./dist/walker/index.d.ts",
       "import": "./dist/walker/index.js",
+      "require": "./dist/walker/index.cjs",
       "default": "./dist/walker/index.js"
     },
     "./package.json": "./package.json"
