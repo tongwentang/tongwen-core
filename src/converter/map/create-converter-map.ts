@@ -10,7 +10,7 @@ export const createConverterMap: ConverterCreator = src => {
 
   const char: ConvertText = (type, text) => convertChar(dic[type], text);
 
-  const phrase: ConvertText = (type, text) => convertPhrase(dic[type], text);
+  const phrase: ConvertText = (type, text, fixedLen) => convertPhrase(dic[type], text, fixedLen);
 
   return { set, char, phrase };
 };
